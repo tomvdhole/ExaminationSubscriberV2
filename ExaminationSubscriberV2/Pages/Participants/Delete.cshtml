@@ -1,0 +1,76 @@
+﻿@page
+@model ExaminationSubscriberV2.Pages.Participants.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Participant</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.Age)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.Age)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.Gsm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.Gsm)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.LicenseNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.LicenseNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.DateTillLicenseIsValid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.DateTillLicenseIsValid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.Grade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.Grade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.NumberOfRedRibbons)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.NumberOfRedRibbons)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Participant.Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

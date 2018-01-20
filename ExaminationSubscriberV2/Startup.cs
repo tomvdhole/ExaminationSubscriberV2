@@ -11,14 +11,23 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ExaminationSubscriberV2.Data;
 using ExaminationSubscriberV2.Services;
+using ExaminationSubscriberV2.Models;
+using ExaminationSubscriberV2.Data.Options;
 
 namespace ExaminationSubscriberV2
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment environment)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder();
+
+            if (environment.IsDevelopment())
+            {
+                builder.AddUserSecrets<Startup>();
+            }
+
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -26,11 +35,19 @@ namespace ExaminationSubscriberV2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            // Add the service required for using options.
+            services.AddOptions();
+
+            // Register the IConfiguration instance which InitializationOptions binds against.
+            services.Configure<InitializationOptions>(Configuration);
+
+
+
+            services.AddDbContext<ExaminationSubscriberV2Context>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<ExaminationSubscriberV2Context>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc()
@@ -43,6 +60,12 @@ namespace ExaminationSubscriberV2
             // Register no-op EmailSender used by account confirmation and password reset during development
             // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
             services.AddSingleton<IEmailSender, EmailSender>();
+
+            services.AddScoped<IRepository<Category>, CategoryRepository>();
+            services.AddScoped<IRepository<Participant>, ParticipantRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IParticipantService, ParticipantService>();
+            services.AddScoped<ISubscribeService, SubscribeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

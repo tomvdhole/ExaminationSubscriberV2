@@ -1,0 +1,73 @@
+﻿@page
+@model ExaminationSubscriberV2.Pages.Participants.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Participant</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.Age)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.Age)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.Gsm)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.Gsm)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.LicenseNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.LicenseNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.DateTillLicenseIsValid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.DateTillLicenseIsValid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.Grade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.Grade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.NumberOfRedRibbons)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Participant.NumberOfRedRibbons)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Participant.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

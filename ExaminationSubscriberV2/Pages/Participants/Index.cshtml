@@ -1,0 +1,84 @@
+﻿@page
+@model ExaminationSubscriberV2.Pages.Participants.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParticipantViewModels[0].FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParticipantViewModels[0].LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParticipantViewModels[0].Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParticipantViewModels[0].Gsm)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParticipantViewModels[0].Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParticipantViewModels[0].LicenseNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParticipantViewModels[0].DateTillLicenseIsValid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParticipantViewModels[0].Grade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParticipantViewModels[0].NumberOfRedRibbons)
+                </th>
+                <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ParticipantViewModels) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gsm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicenseNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTillLicenseIsValid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfRedRibbons)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ParticipantId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ParticipantId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ParticipantId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
